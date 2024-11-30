@@ -1,0 +1,6 @@
+- name: Mid-Wicket
+  angle: 225
+  distance: 100
+- name: Third
+  angle: 45
+  distance: 30

@@ -1,0 +1,16 @@
+- name: Basic
+  slug: basic
+  positions:
+    - name: "Mid-Wicket"
+    - name: "Third"
+- name: Variants
+  slug: variants
+  positions:
+    - name: "Mid-Wicket"
+    - name: "Third"
+- name: Left handed
+  slug: left-handed
+  handed: left
+  positions:
+    - name: "Mid-Wicket"
+    - name: "Third"
