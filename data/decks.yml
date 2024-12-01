@@ -1,6 +1,7 @@
 - name: Standard
   slug: standard
   positions:
+    - name: "Square-Leg"
     - name: "Mid-Wicket"
     - name: "Third"
 - name: Variants

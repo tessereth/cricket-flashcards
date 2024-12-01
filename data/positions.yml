@@ -1,6 +1,11 @@
+# Center of the field is 0,0
+# Distances are out of 100
+- name: Square-Leg
+  x: 40
+  y: -15
 - name: Mid-Wicket
-  angle: 225
-  distance: 100
+  x: 40
+  y: 20
 - name: Third
-  angle: 45
-  distance: 30
+  x: -40
+  y: -80

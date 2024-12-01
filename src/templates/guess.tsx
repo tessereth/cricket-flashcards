@@ -5,6 +5,8 @@ import { Deck, GuessDirection } from '../types'
 import TitleBar from '../components/title-bar'
 import FieldPosition from '../components/field-position'
 
+import Positions from "../../data/positions.yml"
+
 enum Result {
   Unknown,
   Success,
@@ -17,6 +19,8 @@ export default function Guess({ pageContext } : { pageContext : { deck: Deck, gu
   const [positionNumber, setPositionNumber] = useState(0)
   const position = deck.positions[positionNumber]
   console.log(position)
+  const positionData = Positions.find(p => p.name === position.name);
+  console.log(positionData)
 
   const [positionName, setPositionName] = useState('')
   const [result, setResult] = useState(Result.Unknown)
@@ -59,7 +63,7 @@ export default function Guess({ pageContext } : { pageContext : { deck: Deck, gu
           </div>
           <div className="columns">
             <div className='column'>
-              <FieldPosition />
+              <FieldPosition x={positionData.x} y={positionData.y} />
             </div>
             <div className='column'>
               <form className='block' onSubmit={onSubmit}>

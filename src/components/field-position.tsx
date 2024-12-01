@@ -1,6 +1,6 @@
 import React from "react"
 
-export default function FieldPosition() {
+export default function FieldPosition({ x, y } : { x: number, y: number }) {
   const fieldRadius = 75
   const pitchWidth = 10
   const pitchHeight = 30
@@ -17,6 +17,9 @@ export default function FieldPosition() {
   ]
   const bowlerArrowTip = pitchHeight / 2 - bowlerArrowPitchOverlap
 
+  const positionX = x / 100 * fieldRadius
+  const positionY = y / 100 * fieldRadius
+
   return (
     <div className="box">
       <svg width="100%" height="100%" viewBox={`-${fieldRadius} -${fieldRadius} ${fieldRadius*2} ${fieldRadius*2}`} preserveAspectRatio="xMinYMin meet">
@@ -27,6 +30,8 @@ export default function FieldPosition() {
           x2="0" y2={pitchHeight / 2 - bowlerArrowPitchOverlap + bowlerArrowLength}
           stroke="black" strokeWidth="1"/>
         <polygon points={`0 ${bowlerArrowTip - 2} -2 ${bowlerArrowTip + 1} 2 ${bowlerArrowTip + 1}`} fill="black" />
+        <line x1={positionX - 2} y1={positionY - 2} x2={positionX + 2} y2={positionY + 2} stroke="red" />
+        <line x1={positionX - 2} y1={positionY + 2} x2={positionX + 2} y2={positionY - 2} stroke="red" />
       </svg>
     </div>
   )
