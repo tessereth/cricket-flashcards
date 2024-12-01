@@ -16,16 +16,16 @@ const Deck = ({ pageContext } : { pageContext : { deck: DeckType } }) => {
           <div className="level-right">
             <div className="buttons">
               <Link
-                to={deck.slug + '/sign'}
+                to="position"
                 className="button is-primary is-outlined is-inverted"
               >
-                Guess sign
+                Guess position
               </Link>
               <Link
-                to={deck.slug + '/word'}
+                to="name"
                 className="button is-primary is-outlined is-inverted"
               >
-                Guess word
+                Guess name
               </Link>
             </div>
           </div>
