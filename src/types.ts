@@ -15,3 +15,8 @@ export enum GuessDirection {
   Name = "name",
   Position = "position"
 }
+
+export type Position = {
+  x: number | null,
+  y: number | null
+}

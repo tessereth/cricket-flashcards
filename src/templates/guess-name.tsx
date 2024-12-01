@@ -13,7 +13,7 @@ enum Result {
   Fail,
 }
 
-export default function Guess({ pageContext } : { pageContext : { slug: string, guess: GuessDirection } }) {
+export default function GuessName({ pageContext } : { pageContext : { slug: string, guess: GuessDirection } }) {
   const { slug, guess } = pageContext
   const deck = getDeck(slug)
 
@@ -62,7 +62,9 @@ export default function Guess({ pageContext } : { pageContext : { slug: string, 
           </div>
           <div className="columns">
             <div className='column'>
-              <FieldPosition x={position.x} y={position.y} />
+              <div className='box'>
+                <FieldPosition x={position.x} y={position.y} />
+              </div>
             </div>
             <div className='column'>
               <form className='block' onSubmit={onSubmit}>

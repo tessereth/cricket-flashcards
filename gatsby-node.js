@@ -14,7 +14,7 @@ exports.createPages = ({ actions }) => {
     })
     createPage({
       path: `/${deck.slug}/name`,
-      component: require.resolve("./src/templates/guess.tsx"),
+      component: require.resolve("./src/templates/guess-name.tsx"),
       context: {
         slug: deck.slug,
         guess: "name",
@@ -22,7 +22,7 @@ exports.createPages = ({ actions }) => {
     })
     createPage({
       path: `/${deck.slug}/position`,
-      component: require.resolve("./src/templates/guess.tsx"),
+      component: require.resolve("./src/templates/guess-position.tsx"),
       context: {
         slug: deck.slug,
         guess: "position",

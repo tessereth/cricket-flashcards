@@ -41,12 +41,10 @@ const Deck = ({ pageContext } : { pageContext : { slug: string } }) => {
                 <div className="card">
                   <div className="card-header">
                     <div className="card-header-title has-text-centered is-block">
-                      <strong className="is-size-4">
-                        {position.name}
-                      </strong>
+                      {position.name}
                     </div>
                   </div>
-                  <div className="card-image">
+                  <div className="card-content">
                     <FieldPosition x={position.x} y={position.y} />
                   </div>
                 </div>
