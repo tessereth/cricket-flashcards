@@ -54,6 +54,9 @@ export default function Guess({ pageContext } : { pageContext : { deck: Deck, gu
       </TitleBar>
       <section className="section">
         <div className="container">
+          <div className='content'>
+            <p>Name the marked fielding position, assuming a right handed batter and the bowler coming from below.</p>
+          </div>
           <div className="columns">
             <div className='column'>
               <FieldPosition />

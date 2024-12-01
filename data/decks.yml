@@ -1,5 +1,5 @@
-- name: Basic
-  slug: basic
+- name: Standard
+  slug: standard
   positions:
     - name: "Mid-Wicket"
     - name: "Third"

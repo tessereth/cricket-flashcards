@@ -5,6 +5,8 @@ export default function FieldPosition() {
   const pitchWidth = 10
   const pitchHeight = 30
   const infieldRadius = 30
+  const bowlerArrowLength = 15
+  const bowlerArrowPitchOverlap = 5
 
   const infieldPath = [
     "M", -infieldRadius, -pitchHeight / 2,
@@ -13,6 +15,7 @@ export default function FieldPosition() {
     "A", infieldRadius, infieldRadius, 0, 0, 1, -infieldRadius, pitchHeight / 2,
     "Z"
   ]
+  const bowlerArrowTip = pitchHeight / 2 - bowlerArrowPitchOverlap
 
   return (
     <div className="box">
@@ -20,6 +23,10 @@ export default function FieldPosition() {
         <circle cx="0" cy="0" r={fieldRadius} fill="green" />
         <rect x={-pitchWidth / 2} y={-pitchHeight / 2} width={pitchWidth} height={pitchHeight} fill="#d3bc5f" />
         <path d={infieldPath.join(" ")} stroke="#ffe680" strokeDasharray="2,2" fill="none" strokeWidth="0.7" />
+        <line x1="0" y1={bowlerArrowTip}
+          x2="0" y2={pitchHeight / 2 - bowlerArrowPitchOverlap + bowlerArrowLength}
+          stroke="black" strokeWidth="1"/>
+        <polygon points={`0 ${bowlerArrowTip - 2} -2 ${bowlerArrowTip + 1} 2 ${bowlerArrowTip + 1}`} fill="black" />
       </svg>
     </div>
   )
