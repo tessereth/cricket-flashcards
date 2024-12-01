@@ -5,7 +5,7 @@ import { Deck, GuessDirection } from '../types'
 import TitleBar from '../components/title-bar'
 import FieldPosition from '../components/field-position'
 
-import Positions from "../../data/positions.yml"
+import { getDeck } from '../deck-data'
 
 enum Result {
   Unknown,
@@ -13,14 +13,13 @@ enum Result {
   Fail,
 }
 
-export default function Guess({ pageContext } : { pageContext : { deck: Deck, guess: GuessDirection } }) {
-  const { deck, guess } = pageContext
+export default function Guess({ pageContext } : { pageContext : { slug: string, guess: GuessDirection } }) {
+  const { slug, guess } = pageContext
+  const deck = getDeck(slug)
 
   const [positionNumber, setPositionNumber] = useState(0)
   const position = deck.positions[positionNumber]
   console.log(position)
-  const positionData = Positions.find(p => p.name === position.name);
-  console.log(positionData)
 
   const [positionName, setPositionName] = useState('')
   const [result, setResult] = useState(Result.Unknown)
@@ -63,7 +62,7 @@ export default function Guess({ pageContext } : { pageContext : { deck: Deck, gu
           </div>
           <div className="columns">
             <div className='column'>
-              <FieldPosition x={positionData.x} y={positionData.y} />
+              <FieldPosition x={position.x} y={position.y} />
             </div>
             <div className='column'>
               <form className='block' onSubmit={onSubmit}>

@@ -1,10 +1,13 @@
 export type DeckPosition = {
   name: string
+  x: number
+  y: number
 }
 
 export type Deck = {
   name: string
   slug: string
+  description: string
   positions: DeckPosition[]
 }
 

@@ -22,17 +22,19 @@ export default function FieldPosition({ x, y } : { x: number, y: number }) {
 
   return (
     <div className="box">
-      <svg width="100%" height="100%" viewBox={`-${fieldRadius} -${fieldRadius} ${fieldRadius*2} ${fieldRadius*2}`} preserveAspectRatio="xMinYMin meet">
-        <circle cx="0" cy="0" r={fieldRadius} fill="green" />
-        <rect x={-pitchWidth / 2} y={-pitchHeight / 2} width={pitchWidth} height={pitchHeight} fill="#d3bc5f" />
-        <path d={infieldPath.join(" ")} stroke="#ffe680" strokeDasharray="2,2" fill="none" strokeWidth="0.7" />
-        <line x1="0" y1={bowlerArrowTip}
-          x2="0" y2={pitchHeight / 2 - bowlerArrowPitchOverlap + bowlerArrowLength}
-          stroke="black" strokeWidth="1"/>
-        <polygon points={`0 ${bowlerArrowTip - 2} -2 ${bowlerArrowTip + 1} 2 ${bowlerArrowTip + 1}`} fill="black" />
-        <line x1={positionX - 2} y1={positionY - 2} x2={positionX + 2} y2={positionY + 2} stroke="red" />
-        <line x1={positionX - 2} y1={positionY + 2} x2={positionX + 2} y2={positionY - 2} stroke="red" />
-      </svg>
+      <div className="image m-4">
+        <svg width="100%" height="100%" viewBox={`-${fieldRadius} -${fieldRadius} ${fieldRadius*2} ${fieldRadius*2}`} preserveAspectRatio="xMinYMin meet">
+          <circle cx="0" cy="0" r={fieldRadius} fill="green" />
+          <rect x={-pitchWidth / 2} y={-pitchHeight / 2} width={pitchWidth} height={pitchHeight} fill="#d3bc5f" />
+          <path d={infieldPath.join(" ")} stroke="#ffe680" strokeDasharray="2,2" fill="none" strokeWidth="0.7" />
+          <line x1="0" y1={bowlerArrowTip}
+            x2="0" y2={pitchHeight / 2 - bowlerArrowPitchOverlap + bowlerArrowLength}
+            stroke="black" strokeWidth="1"/>
+          <polygon points={`0 ${bowlerArrowTip - 2} -2 ${bowlerArrowTip + 1} 2 ${bowlerArrowTip + 1}`} fill="black" />
+          <line x1={positionX - 2} y1={positionY - 2} x2={positionX + 2} y2={positionY + 2} stroke="red" />
+          <line x1={positionX - 2} y1={positionY + 2} x2={positionX + 2} y2={positionY - 2} stroke="red" />
+        </svg>
+      </div>
     </div>
   )
 }

@@ -1,16 +1,19 @@
 - name: Standard
   slug: standard
+  description: All the standard fielding positions
   positions:
     - name: "Square-Leg"
     - name: "Mid-Wicket"
     - name: "Third"
 - name: Variants
   slug: variants
+  description: Includes varients on positions (short/long, forwards/backwards etc)
   positions:
     - name: "Mid-Wicket"
     - name: "Third"
 - name: Left handed
   slug: left-handed
+  description: Standard positions but for a left-handed batter
   handed: left
   positions:
     - name: "Mid-Wicket"

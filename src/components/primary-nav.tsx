@@ -1,9 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
 
-import type { Deck } from '../types'
-
-import Decks from "../../data/decks.yml"
+import { allDecks } from '../deck-data'
 
 export default function PrimaryNav() {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -39,7 +37,7 @@ export default function PrimaryNav() {
             <div className="navbar-item has-dropdown is-hoverable">
               <div className="navbar-link">Decks</div>
               <div className="navbar-dropdown">
-                {Decks.map((deck : Deck) => (
+                {allDecks().map(deck => (
                   <Link
                     key={deck.slug}
                     to={`/${deck.slug}`}
