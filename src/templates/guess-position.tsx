@@ -55,47 +55,53 @@ export default function GuessPosition({ pageContext } : { pageContext : { slug: 
           <div className='content'>
             <p>Click on the field at the given fielding position, assuming a right handed batter and the bowler coming from below.</p>
           </div>
-          <div className="card" style={{ maxWidth: "40rem" }}>
-            <div className="card-header">
-              <div className="card-header-title has-text-centered is-block">
-                {position.name}
+          <div className="columns">
+            <div className="column">
+              <div className="card" style={{ maxWidth: "40rem" }}>
+                <div className="card-header">
+                  <div className="card-header-title has-text-centered is-block">
+                    {position.name}
+                  </div>
+                </div>
+                <div className="card-content">
+                  <FieldPosition x={positionGuess.x} y={positionGuess.y} setPosition={setPositionGuess} />
+                </div>
               </div>
             </div>
-            <div className="card-content">
-              <FieldPosition x={positionGuess.x} y={positionGuess.y} setPosition={setPositionGuess} />
+            <div className='column'>
+              <div className="block">
+                <button className="button is-primary" onClick={checkAnswer}>Check</button>
+              </div>
+              {result === Result.Success && (
+                <div className='notification is-light is-success'>
+                  <div className='level'>
+                    <div className='level-left'>
+                      Correct!
+                    </div>
+                    <div className='level-right'>
+                      <button className='button is-primary' onClick={onNext}>
+                        Next
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
+              {result === Result.Fail && (
+                <div className='notification is-light is-danger'>
+                  <div className='level'>
+                    <div className='level-left'>
+                      Incorrect, try again.
+                    </div>
+                    <div className='level-right'>
+                      <button className='button is-primary' onClick={onReveal}>
+                        Reveal
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              )}
             </div>
           </div>
-          <div className="block">
-            <button className="button is-primary" onClick={checkAnswer}>Check</button>
-          </div>
-          {result === Result.Success && (
-            <div className='notification is-light is-success'>
-              <div className='level'>
-                <div className='level-left'>
-                  Correct!
-                </div>
-                <div className='level-right'>
-                  <button className='button is-primary' onClick={onNext}>
-                    Next
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-          {result === Result.Fail && (
-            <div className='notification is-light is-danger'>
-              <div className='level'>
-                <div className='level-left'>
-                  Incorrect, try again.
-                </div>
-                <div className='level-right'>
-                  <button className='button is-primary' onClick={onReveal}>
-                    Reveal
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
         </div>
       </section>
     </Layout>
