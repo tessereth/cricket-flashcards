@@ -6,6 +6,7 @@ import TitleBar from '../components/title-bar'
 import FieldPosition from '../components/field-position'
 
 import { getDeck } from '../deck-data'
+import classNames from 'classnames'
 
 enum Result {
   Unknown,
@@ -23,7 +24,6 @@ export default function GuessName({ pageContext } : { pageContext : { slug: stri
 
   const [positionNumber, setPositionNumber] = useState(0)
   const position = deck.positions[positionNumber]
-  console.log(position)
 
   const [positionName, setPositionName] = useState('')
   const [result, setResult] = useState(Result.Unknown)
@@ -76,43 +76,34 @@ export default function GuessName({ pageContext } : { pageContext : { slug: stri
                     Position name
                   </label>
                   <div className='control'>
-                    <input className='input' value={positionName} onChange={(e) => setPositionName(e.target.value)} />
+                    <input
+                      className={classNames('input', { 'is-success': result === Result.Success, 'is-danger': result === Result.Fail })}
+                      value={positionName}
+                      onChange={(e) => setPositionName(e.target.value)}
+                    />
                   </div>
+                  {result === Result.Unknown && (
+                    <p className='help'>Guess the position name</p>
+                  )}
+                  {result === Result.Success && (
+                    <p className='help is-success'>Correct!</p>
+                  )}
+                  {result === Result.Fail && (
+                    <p className='help is-danger'>Incorrect, try again.</p>
+                  )}
                 </div>
-                <div className='field'>
-                  <div className='control'>
-                    <button className='button is-primary'>Check</button>
+                <div className="field is-grouped">
+                  <div className="control">
+                    <button className="button is-primary" disabled={result === Result.Success}>Check</button>
+                  </div>
+                  <div className="control">
+                    <button className="button is-primary" disabled={result === Result.Success} onClick={onReveal}>Reveal</button>
+                  </div>
+                  <div className="control">
+                    <button className="button is-primary" disabled={result !== Result.Success} onClick={onNext}>Next</button>
                   </div>
                 </div>
               </form>
-              {result === Result.Success && (
-                <div className='notification is-light is-success'>
-                  <div className='level'>
-                    <div className='level-left'>
-                      Correct!
-                    </div>
-                    <div className='level-right'>
-                      <button className='button is-primary' onClick={onNext}>
-                        Next
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
-              {result === Result.Fail && (
-                <div className='notification is-light is-danger'>
-                  <div className='level'>
-                    <div className='level-left'>
-                      Incorrect, try again.
-                    </div>
-                    <div className='level-right'>
-                      <button className='button is-primary' onClick={onReveal}>
-                        Reveal
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              )}
             </div>
           </div>
         </div>
