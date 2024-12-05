@@ -1,11 +1,56 @@
 # Center of the field is 0,0
 # Distances are out of 100
-- name: Square-Leg
+- name: Long stop
+  x: 0
+  y: -95
+- name: Short stop
+  x: 0
+  y: -60
+- name: Fine leg
+  x: 50
+  y: -80
+- name: Square leg
   x: 40
-  y: -15
-- name: Mid-Wicket
+  y: -17
+- name: Mid-wicket
   x: 40
   y: 20
-- name: Third
+- name: Mid-on
+  x: 25
+  y: 50
+- name: Long on
+  x: 35
+  y: 90
+- name: Straight
+  alternate_names:
+    - Straight hit
+  x: 0
+  y: 95
+- name: Mid-off
+  x: -25
+  y: 50
+- name: Long off
+  x: -35
+  y: 90
+- name: Cover
   x: -40
+  y: 20
+- name: Extra cover
+  x: -40
+  y: 10
+- name: Point
+  x: -40
+  y: -17
+- name: Gully
+  x: -25
+  y: -30
+- name: Slip
+  alternate_names:
+    - First slip
+  x: -5
+  y: -40
+- name: Third
+  alternate_names:
+    - Third man
+  x: -50
   y: -80

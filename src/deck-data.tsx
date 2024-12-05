@@ -21,6 +21,9 @@ export function addLocationsToDeck(deck: Deck) : Deck {
 
 function addLocationToPosition(position: { name: string }) : DeckPosition {
   const data = Positions.find((p: DeckPosition) => p.name === position.name)
+  if (!data) {
+    throw new Error(`Unknown position: ${position.name}`)
+  }
   return {
     ...position,
     x: data.x,

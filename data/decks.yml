@@ -1,20 +1,31 @@
-- name: Standard
-  slug: standard
-  description: All the standard fielding positions
+- name: Primary positions
+  slug: primary
+  description: All the primary fielding positions
   positions:
-    - name: "Square-Leg"
-    - name: "Mid-Wicket"
-    - name: "Third"
-- name: Variants
+    - name: Mid-on
+    - name: Mid-off
+    - name: Long on
+    - name: Long off
+    - name: Mid-wicket
+    - name: Cover
+    - name: Square leg
+    - name: Point
+    - name: Gully
+    - name: Slip
+    - name: Third
+    - name: Fine leg
+- name: Other positions
   slug: variants
   description: Includes varients on positions (short/long, forwards/backwards etc)
   positions:
-    - name: "Mid-Wicket"
-    - name: "Third"
+    - name: Long stop
+    - name: Short stop
+    - name: Straight
+    - name: Extra cover
 - name: Left handed
   slug: left-handed
   description: Standard positions but for a left-handed batter
   handed: left
   positions:
-    - name: "Mid-Wicket"
-    - name: "Third"
+    - name: Mid-wicket
+    - name: Third
