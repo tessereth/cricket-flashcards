@@ -3,6 +3,7 @@ import { Position } from "../types"
 
 export default function FieldPosition({ x, y, setPosition } : { x?: number, y?: number, setPosition?: (p: Position) => void}) {
   const fieldRadius = 75
+  const margin = 5
   const pitchWidth = 10
   const pitchHeight = 30
   const infieldRadius = 30
@@ -27,16 +28,24 @@ export default function FieldPosition({ x, y, setPosition } : { x?: number, y?: 
     if (!setPosition) {
       return
     }
-    console.log(e)
     const svg: HTMLElement = e.target.closest('svg')
     const svgRect = svg.getBoundingClientRect()
-    console.log(svgRect)
     const clientX = e.clientX - svgRect.left
     const clientY = e.clientY - svgRect.top
 
+    // Between 0 and 1, relative to SVG
+    const svgX = (e.clientX - svgRect.left) / svgRect.width
+    const svgY = (e.clientY - svgRect.top) / svgRect.height
+
+    // field ratio
+    const marginLeft = margin / (fieldRadius + margin) / 2
+
+    const fieldX = (svgX - marginLeft) / (1 - marginLeft*2)
+    const fieldY = (svgY - marginLeft) / (1 - marginLeft*2)
+
     const newPosition = {
-      x: clientX / svgRect.width * 200 - 100,
-      y: clientY / svgRect.height * 200 - 100
+      x: fieldX * 200 - 100,
+      y: fieldY * 200 - 100
     }
     console.log(newPosition)
 
@@ -44,8 +53,8 @@ export default function FieldPosition({ x, y, setPosition } : { x?: number, y?: 
   }
 
   return (
-    <div className="image m-4">
-      <svg width="100%" height="100%" viewBox={`-${fieldRadius} -${fieldRadius} ${fieldRadius*2} ${fieldRadius*2}`} preserveAspectRatio="xMinYMin meet" onClick={onClick}>
+    <div className="image">
+      <svg width="100%" height="100%" viewBox={`-${fieldRadius + margin} -${fieldRadius + margin} ${(fieldRadius + margin)*2} ${(fieldRadius  + margin)*2}`} preserveAspectRatio="xMinYMin meet" onClick={onClick}>
         <circle cx="0" cy="0" r={fieldRadius} fill="var(--bulma-success-40)" />
         <rect x={-pitchWidth / 2} y={-pitchHeight / 2} width={pitchWidth} height={pitchHeight} fill="var(--bulma-warning-70)" />
         <path d={infieldPath.join(" ")} stroke="var(--bulma-warning-70)" strokeDasharray="3,1" fill="none" strokeWidth="0.7" />
