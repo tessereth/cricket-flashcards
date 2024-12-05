@@ -13,6 +13,10 @@ enum Result {
   Fail,
 }
 
+function cleanName(name : string) {
+  return name.toLowerCase().replaceAll('-', ' ')
+}
+
 export default function GuessName({ pageContext } : { pageContext : { slug: string, guess: GuessDirection } }) {
   const { slug, guess } = pageContext
   const deck = getDeck(slug)
@@ -25,9 +29,8 @@ export default function GuessName({ pageContext } : { pageContext : { slug: stri
   const [result, setResult] = useState(Result.Unknown)
 
   const checkAnswer = () => {
-    console.log("Checking answer", positionName, position.name)
-    // TODO: handle variations
-    if (positionName === position.name) {
+    console.log("Checking answer", positionName, position.allNames)
+    if (position.allNames.map(cleanName).includes(cleanName(positionName))) {
       setResult(Result.Success)
     } else {
       setResult(Result.Fail)

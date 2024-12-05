@@ -1,5 +1,6 @@
 export type DeckPosition = {
   name: string
+  allNames: string[]
   x: number
   y: number
 }
