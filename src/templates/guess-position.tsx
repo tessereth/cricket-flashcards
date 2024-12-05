@@ -13,6 +13,22 @@ enum Result {
   Fail,
 }
 
+function distance(p1 : Position, p2 : Position) : number {
+  return Math.sqrt((p1.x - p2.x)**2 + (p1.y - p2.y)**2)
+}
+
+function closestPosition(deck : Deck, guess : Position) {
+  let closest = deck.positions[0]
+  let closestDistance = distance(closest, guess)
+  deck.positions.forEach(p => {
+    if (distance(p, guess) < closestDistance) {
+      closest = p
+      closestDistance = distance(p, guess)
+    }
+  })
+  return closest
+}
+
 export default function GuessPosition({ pageContext } : { pageContext : { slug: string, guess: GuessDirection } }) {
   const { slug, guess } = pageContext
   const deck = getDeck(slug)
@@ -21,13 +37,12 @@ export default function GuessPosition({ pageContext } : { pageContext : { slug: 
   const position = deck.positions[positionNumber]
   console.log(position)
 
-  const [positionGuess, setPositionGuess] = useState<Position>({x: null, y: null})
+  const [positionGuess, setPositionGuess] = useState<Position | undefined>()
   const [result, setResult] = useState(Result.Unknown)
 
   const checkAnswer = () => {
     console.log("Checking answer", positionGuess, position)
-    // TODO
-    if (true) {
+    if (positionGuess && closestPosition(deck, positionGuess).name === position.name) {
       setResult(Result.Success)
     } else {
       setResult(Result.Fail)
@@ -41,7 +56,7 @@ export default function GuessPosition({ pageContext } : { pageContext : { slug: 
 
   const onNext = () => {
     setPositionNumber(positionNumber + 1)
-    setPositionGuess({x: null, y: null})
+    setPositionGuess(undefined)
     setResult(Result.Unknown)
   }
 
@@ -64,7 +79,7 @@ export default function GuessPosition({ pageContext } : { pageContext : { slug: 
                   </div>
                 </div>
                 <div className="card-content">
-                  <FieldPosition x={positionGuess.x} y={positionGuess.y} setPosition={setPositionGuess} />
+                  <FieldPosition x={positionGuess?.x} y={positionGuess?.y} setPosition={setPositionGuess} />
                 </div>
               </div>
             </div>
