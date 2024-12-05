@@ -13,43 +13,41 @@ const IndexPage: React.FC<PageProps> = () => {
       </TitleBar>
       <div className="section">
         <div className="container">
-          <div className="fixed-grid">
-            <div className="grid">
-              {allDecks().map(deck => (
-                <div className="cell" key={deck.slug}>
-                  <div className="card">
-                    <div className="card-header">
-                      <p className="card-header-title">{deck.name}</p>
-                    </div>
-                    <div className="card-content">
-                      <div className="content">
-                        {deck.description}
-                      </div>
-                    </div>
-                    <div className="card-footer">
-                      <Link
-                        to={`/${deck.slug}/name`}
-                        className="card-footer-item"
-                      >
-                        Guess name
-                      </Link>
-                      <Link
-                        to={`/${deck.slug}/position`}
-                        className="card-footer-item"
-                      >
-                        Guess position
-                      </Link>
-                      <Link
-                        to={`/${deck.slug}`}
-                        className="card-footer-item"
-                      >
-                        Show all
-                      </Link>
+          <div className="grid is-col-min-12">
+            {allDecks().map(deck => (
+              <div className="cell" key={deck.slug}>
+                <div className="card">
+                  <div className="card-header">
+                    <p className="card-header-title">{deck.name}</p>
+                  </div>
+                  <div className="card-content">
+                    <div className="content">
+                      {deck.description}
                     </div>
                   </div>
+                  <div className="card-footer">
+                    <Link
+                      to={`/${deck.slug}/name`}
+                      className="card-footer-item"
+                    >
+                      Guess name
+                    </Link>
+                    <Link
+                      to={`/${deck.slug}/position`}
+                      className="card-footer-item"
+                    >
+                      Guess position
+                    </Link>
+                    <Link
+                      to={`/${deck.slug}`}
+                      className="card-footer-item"
+                    >
+                      Show all
+                    </Link>
+                  </div>
                 </div>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
         </div>
       </div>
